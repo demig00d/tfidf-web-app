@@ -40,6 +40,17 @@ input[type="submit"]:disabled {
     cursor: not-allowed;
 }
 
+.result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.result h1 {
+    text-align: start;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

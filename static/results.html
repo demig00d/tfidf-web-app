@@ -6,17 +6,20 @@
         <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
     </head>
     <body>
-        <table style="width:50%">
-            <tr>
-                {% for c in columns %}<td>{{ c }}</td>{% endfor %}
-            </tr>
-            {% for d in data %}
+        <div class=result>
+            <h1>Результаты</h1>
+            <table style="width:50%">
                 <tr>
-                    {% for v in d.values() %}
-                        <td>{{ v }}</td>
-                    {% endfor %}
+                    {% for c in columns %}<td>{{ c }}</td>{% endfor %}
                 </tr>
-            {% endfor %}
-        </table>
+                {% for d in data %}
+                    <tr>
+                        {% for v in d.values() %}
+                            <td>{{ v }}</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 </html>
