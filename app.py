@@ -1,5 +1,3 @@
-from typing import List
-
 from fastapi import FastAPI, File, UploadFile, Request, Response, HTTPException
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -13,18 +11,16 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.post("/upload")
-async def upload(request: Request, files: List[UploadFile] = File(...)) -> Response:
+async def upload(request: Request, file: UploadFile = File(...)) -> Response:
     try:
-        contents = []
-        for file in files:
-            with file.file as f:
-                content = f.read()
-                contents.append(content)
-
-        res = tfidf(contents)
+        content = file.file.read()
+        res = tfidf([content])
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Something went wrong {e}")
+
+    finally:
+        file.close()
 
     context = {
         "request": request,

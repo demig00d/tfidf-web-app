@@ -7,8 +7,8 @@
     </head>
     <body>
         <form method="post" action="/upload" enctype="multipart/form-data">
-            <label for="textFile">Загрузите текстовые файлы</label>
-            <input type="file" id="files" name="files" multiple onchange="enableSubmitBtn();"><br><br>
+            <h1>Загрузите текстовый файл</h1>
+            <input type="file" id="file" name="file" onchange="enableSubmitBtn();"><br><br>
             <input type="submit" id="submitBtn" value="submit" disabled>
         </form>
         <script>
