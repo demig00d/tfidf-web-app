@@ -3,16 +3,17 @@ from tfidf import tfidf
 import numpy as np
 import numpy.testing as npt
 
+
 def analyse_file(filename: str) -> Dict[str, Dict[str, np.float64]]:
     with open(filename) as f:
         result_rows = tfidf([f.read()])
-    return { 
-        row["слово"]: 
-            {
-                "tf": row["tf"], 
-                "idf": row["idf"],
-            } for row in result_rows 
+    return {
+        row["слово"]: {
+            "tf": row["tf"],
+            "idf": row["idf"],
         }
+        for row in result_rows
+    }
 
 
 def test_tfidf():
